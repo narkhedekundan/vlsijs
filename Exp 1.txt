@@ -1,0 +1,151 @@
+﻿				 EXPERIMENT NO . 1
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Area Calculator - Triangle, Rectangle, Circle</title>
+</head>
+<body>
+  <h1>Area Calculator</h1>
+
+  <!-- Triangle -->
+  <section>
+    <h2>Triangle (Area = 0.5 × base × height)</h2>
+    <label>
+      Base:
+      <input id="tri-base" type="number" step="any" min="0" placeholder="enter base">
+    </label>
+    <br>
+    <label>
+      Height:
+      <input id="tri-height" type="number" step="any" min="0" placeholder="enter height">
+    </label>
+    <br>
+    <button id="calc-triangle">Calculate Triangle Area</button>
+    <button id="clear-triangle">Clear</button>
+    <p>Result: <span id="tri-result">-</span></p>
+  </section>
+
+  <hr>
+
+  <!-- Rectangle -->
+  <section>
+    <h2>Rectangle (Area = length × width)</h2>
+    <label>
+      Length:
+      <input id="rect-length" type="number" step="any" min="0" placeholder="enter length">
+    </label>
+    <br>
+    <label>
+      Width:
+      <input id="rect-width" type="number" step="any" min="0" placeholder="enter width">
+    </label>
+    <br>
+    <button id="calc-rectangle">Calculate Rectangle Area</button>
+    <button id="clear-rectangle">Clear</button>
+    <p>Result: <span id="rect-result">-</span></p>
+  </section>
+
+  <hr>
+
+  <!-- Circle -->
+  <section>
+    <h2>Circle (Area = π × r²)</h2>
+    <label>
+      Radius:
+      <input id="circ-radius" type="number" step="any" min="0" placeholder="enter radius">
+    </label>
+    <br>
+    <button id="calc-circle">Calculate Circle Area</button>
+    <button id="clear-circle">Clear</button>
+    <p>Result: <span id="circ-result">-</span></p>
+  </section>
+
+  <script>
+    /* Utility: read and validate a positive number from input element */
+    function readPositiveNumber(id) {
+      const el = document.getElementById(id);
+      const raw = el.value;
+      if (raw === '') return { ok: false, msg: 'empty' };
+      const val = Number(raw);
+      if (!isFinite(val)) return { ok: false, msg: 'not a number' };
+      if (val < 0) return { ok: false, msg: 'negative' };
+      return { ok: true, value: val };
+    }
+
+    /* Triangle */
+    document.getElementById('calc-triangle').addEventListener('click', function () {
+      const b = readPositiveNumber('tri-base');
+      const h = readPositiveNumber('tri-height');
+      const out = document.getElementById('tri-result');
+
+      if (!b.ok) return out.textContent = 'Invalid base (' + b.msg + ')';
+      if (!h.ok) return out.textContent = 'Invalid height (' + h.msg + ')';
+
+      const area = 0.5 * b.value * h.value;
+      out.textContent = area.toFixed(2);
+    });
+
+    document.getElementById('clear-triangle').addEventListener('click', function () {
+      document.getElementById('tri-base').value = '';
+      document.getElementById('tri-height').value = '';
+      document.getElementById('tri-result').textContent = '-';
+    });
+
+    /* Rectangle */
+    document.getElementById('calc-rectangle').addEventListener('click', function () {
+      const l = readPositiveNumber('rect-length');
+      const w = readPositiveNumber('rect-width');
+      const out = document.getElementById('rect-result');
+
+      if (!l.ok) return out.textContent = 'Invalid length (' + l.msg + ')';
+      if (!w.ok) return out.textContent = 'Invalid width (' + w.msg + ')';
+
+      const area = l.value * w.value;
+      out.textContent = area.toFixed(2);
+    });
+
+    document.getElementById('clear-rectangle').addEventListener('click', function () {
+      document.getElementById('rect-length').value = '';
+      document.getElementById('rect-width').value = '';
+      document.getElementById('rect-result').textContent = '-';
+    });
+
+    /* Circle */
+    document.getElementById('calc-circle').addEventListener('click', function () {
+      const r = readPositiveNumber('circ-radius');
+      const out = document.getElementById('circ-result');
+
+      if (!r.ok) return out.textContent = 'Invalid radius (' + r.msg + ')';
+
+      const area = Math.PI * r.value * r.value;
+      out.textContent = area.toFixed(2);
+    });
+
+    document.getElementById('clear-circle').addEventListener('click', function () {
+      document.getElementById('circ-radius').value = '';
+      document.getElementById('circ-result').textContent = '-';
+    });
+
+    /* Optional: allow Enter key to trigger the related button when inside inputs */
+    ['tri-base','tri-height'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('calc-triangle').click();
+      });
+    });
+    ['rect-length','rect-width'].forEach(id => {
+      document.getElementById(id).addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('calc-rectangle').click();
+      });
+    });
+    document.getElementById('circ-radius').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') document.getElementById('calc-circle').click();
+    });
+  </script>
+</body>
+</html>
+
+		                                            OUTPUT
+
+

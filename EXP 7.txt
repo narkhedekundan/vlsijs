@@ -1,0 +1,31 @@
+﻿     EXPERIMENT NO 7
+      
+Index.html 
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>Object to Array</title> 
+</head> 
+<body> 
+  <h2>Create Object and Store in Array</h2> 
+  <label>Enter Object Field Name:</label> 
+  <input type="text" id="fieldInput"><br><br> 
+  <label>Enter Object Field Value:</label> 
+  <input type="text" id="valueInput"><br><br> 
+  <button onclick="addObjectToArray()">Add Object to Array</button><br><br> 
+  <button onclick="checkIfArray()">Check if Variable is Array</button><br><br> 
+  <div id="arrayDisplay"></div> 
+  <div id="checkDisplay"></div> 
+  <script src="exp7.js"></script> 
+</body> 
+</html> 
+ 
+Script.js let myArray = []; function addObjectToArray() {     const field = document.getElementById('fieldInput').value;     const value = document.getElementById('valueInput').value; 
+    let obj = {};     obj[field] = value;     myArray.push(obj); 
+    document.getElementById('arrayDisplay').innerHTML = `<strong>Array:</strong> 
+${JSON.stringify(myArray)}`;     document.getElementById('fieldInput').value = '';     document.getElementById('valueInput').value = ''; 
+} 
+function checkIfArray() {     const result = Array.isArray(myArray); 
+    document.getElementById('checkDisplay').innerHTML = `<strong>Is myArray an array?</strong> ${result}`; 
+} 
+      OUTPUT  

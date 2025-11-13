@@ -1,0 +1,79 @@
+﻿EXPERIMENT NO 2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Multiplication Table</title>
+</head>
+<body>
+  <h1>Multiplication Table</h1>
+
+  <label for="number">Enter number:</label>
+  <input id="number" type="number" value="2" />
+
+  <label for="limit">Up to:</label>
+  <input id="limit" type="number" value="10" min="1" />
+
+  <button id="btnFor">Generate (for loop)</button>
+  <button id="btnWhile">Generate (while loop)</button>
+
+  <div id="output" aria-live="polite"></div>
+
+  <script>
+    const numberInput = document.getElementById('number');
+    const limitInput = document.getElementById('limit');
+    const output = document.getElementById('output');
+
+    function showLines(lines) {
+      // use <pre> so each line appears on its own line exactly as typed
+      const pre = document.createElement('pre');
+      pre.textContent = lines.join('\n');
+      output.innerHTML = '';
+      output.appendChild(pre);
+    }
+
+    function validateInputs() {
+      const n = Number(numberInput.value);
+      const limit = Number(limitInput.value);
+      if (!Number.isFinite(n) || !Number.isFinite(limit) || !Number.isInteger(limit) || limit < 1) {
+        output.textContent = 'Please enter a valid number and a positive integer "Up to" value.';
+        return null;
+      }
+      return { n, limit };
+    }
+
+    document.getElementById('btnFor').addEventListener('click', () => {
+      const v = validateInputs();
+      if (!v) return;
+      const { n, limit } = v;
+      const lines = [];
+      for (let i = 1; i <= limit; i++) {
+        lines.push(`${n} x ${i} = ${n * i}`);
+      }
+      showLines(lines);
+    });
+
+    document.getElementById('btnWhile').addEventListener('click', () => {
+      const v = validateInputs();
+      if (!v) return;
+      const { n, limit } = v;
+      const lines = [];
+      let i = 1;
+      while (i <= limit) {
+        lines.push(`${n} x ${i} = ${n * i}`);
+        i++;
+      }
+      showLines(lines);
+    });
+  </script>
+</body>
+</html>
+
+
+
+OUTPUT
+
+
+
+
+

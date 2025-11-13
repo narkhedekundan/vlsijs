@@ -1,0 +1,55 @@
+﻿     EXPERIMENT NO 10
+     
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Window/Document Properties</title>
+</head>
+<body>
+  <h2>JavaScript Program Output</h2>
+
+  <!-- Output containers -->
+  <p id="browserInfo"></p>
+  <p id="screenDetails"></p>
+  <p id="historyLength"></p>
+  <p id="paraCount"></p>
+  <p id="replaceText"></p>
+
+  <!-- Paragraphs to count and replace text -->
+  <p>This is paragraph 1.</p>
+  <p>This is paragraph 2.</p>
+  <p>This is paragraph 3.</p>
+
+  <script>
+    // 1. Browser Name & Version
+    document.getElementById("browserInfo").innerHTML =
+      "<strong>Browser Info:</strong> " + navigator.userAgent;
+
+    // 2. Screen Details
+    document.getElementById("screenDetails").innerHTML =
+      "<strong>Screen:</strong> Width = " + screen.width + ", Height = " + screen.height;
+
+    // 3. History Stack
+    document.getElementById("historyLength").innerHTML =
+      "<strong>History Length:</strong> " + history.length;
+
+    // 4. Number of paragraph tags
+    var paragraphs = document.getElementsByTagName("p");
+    document.getElementById("paraCount").innerHTML =
+      "<strong>Number of Paragraph Tags:</strong> " + paragraphs.length;
+
+    // 5. Replace text in a particular tag (let's change the 3rd paragraph)
+    paragraphs[2].innerHTML = "✅ This paragraph text has been replaced!";
+    document.getElementById("replaceText").innerHTML =
+      "<strong>Text in 3rd Paragraph Replaced.</strong>";
+  </script>
+</body>
+</html>
+     
+     
+     
+     
+     
+     
+     OUTPUT
+

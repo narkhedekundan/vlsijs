@@ -1,0 +1,57 @@
+﻿    EXPERIMENT NO . 4
+    
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>String Comparison</title>  
+    <script src="program4.js"></script>  
+</head>  
+<body>  
+    <h2>Compare Two Strings</h2>  
+  
+    <!-- Input for first string -->  
+    <label for="str1">Enter first string:</label>  
+    <input type="text" id="str1"><br><br>  
+  
+    <!-- Input for second string -->  
+    <label for="str2">Enter second string:</label>  
+    <input type="text" id="str2"><br><br>  
+  
+    <button onclick="compareStrings()">Compare Strings</button>  
+    <h3>Comparison Results:</h3>  
+    <div id="results"></div>  
+</body>  
+</html>  
+  
+  
+program4.js  function compareStrings() {  
+ let s1 = document.getElementById("str1").value;         let s2 = document.getElementById("str2").value;     
+ let output = "";  
+  
+    if (s1 === "" || s2 === "") {          document.getElementById("results").innerText = "⚠️ Please enter both strings.";         return;  
+    }  
+  
+      
+    output += "<h4>1. Direct Comparison (===)</h4>";  
+    output += (s1 === s2) ? "Strings are equal" : "Strings are not equal";  
+  
+    output += "<h4>2. Case-insensitive Comparison </h4>";  
+    output += (s1.toLowerCase() === s2.toLowerCase()) ? "Strings are equal" : "Strings are not equal";  
+  
+    output += "<h4>3. Using localeCompare()</h4>";         
+let cmp = s1.localeCompare(s2);     if (cmp === 0) output += "Strings are equal";  
+    else if (cmp < 0) output += `"${s1}" comes before "${s2}"`;     
+else output += `"${s1}" comes after "${s2}"`;  
+  
+    output += "<h4>4. Compare Length</h4>";  
+    output += (s1.length === s2.length) ? "Strings have same length" : "Strings have different lengths";  
+  
+    output += "<h4>5. Lexicographical Comparison</h4>";     if (s1 < s2) output += `"${s1}" comes before "${s2}"`;     else if (s1 > s2) output += `"${s1}" comes after "${s2}"`;     else output += "Strings are equal";  
+  
+    document.getElementById("results").innerHTML = output;  
+}  
+ 
+Output 
+ 
+   
