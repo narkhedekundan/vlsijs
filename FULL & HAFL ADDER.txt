@@ -1,0 +1,17 @@
+module FULLADDER( Cin,B,A,Sum,Carry);
+ input Cin,B,A;
+ output Sum,Carry;
+ xor xor2(Sum,w1,Cin);
+ xor xor2(w1,A,B);
+ and and2(w7,Cin,w1);
+ and and2(w8,B,A);
+ or or2(Carry,w7,w8);
+endmodule
+
+
+module HALFADDER( inl, in2, sum, carry);
+input in1, in2;
+output sum,carry;
+xor #(16) xor2(sum, in1, in2);
+and #(16) and2 (carry, in2, in1);
+endmodule

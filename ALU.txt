@@ -1,0 +1,100 @@
+*  VDHL CODE
+Library IEEE; 
+use IEEE.STD_LOGIC_1164.ALL; 
+use IEEE.STD_LOGIC_unsigned.ALL; 
+use IEEE.STD_LOGIC_arith.ALL; 
+entity abc is 
+Port ( a : in 
+STD_LOGIC_VECTOR (3 downto 0); 
+b : in  
+STD_LOGIC_VECTOR (3 downto 
+0); s : in STD_LOGIC_VECTOR (2 downto 
+0); 
+c : out STD_LOGIC_VECTOR (3 downto 0)); 
+end abc; 
+architecture Behavioral of abc is 
+begin 
+process (a,b,s) 
+begin 
+case s is 
+when "000" => c <=a+ b; 
+when "001" => c <=a - b; 
+when "010" => c <= a and b; 
+when "011" => c <= a or b; 
+when "100" => c <= a nand b; 
+when "101" => c <= a nor b; 
+when "110" => c <= not a; 
+when "111" => c <= a; 
+when others => null; 
+end case; 
+end process; 
+end Behavioral;
+
+
+* Testbench: 
+LIBRARY ieee; 
+USE ieee.std_logic_1164.ALL; 
+ENTITY xyz IS 
+END xyz; 
+ARCHITECTURE behavior OF xyz IS 
+COMPONENT abc 
+PORT( 
+a : IN std_logic_vector(3 downto 0); 
+b : IN  std_logic_vector(3 downto 
+0); s : IN std_logic_vector(2 downto 
+0); 
+c : OUT std_logic_vector(3 downto 
+0)); END COMPONENT; --Inputs 
+signal a : std_logic_vector(3 downto 0) := (others => '0'); 
+signal b : std_logic_vector(3 downto 0) := (others => '0'); 
+signal s : std_logic_vector(2 downto 0) := (others => '0'); --Outputs 
+signal c : std_logic_vector(3 downto 0); 
+BEGIN 
+uut: abc PORT MAP ( 
+a => a, 
+b => b, 
+s => s, 
+c => c ); 
+stim_proc: process 
+begin -- hold reset state for 100 ns. 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="000"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="000"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="001"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="010"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="101"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="100"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="101"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="110"; 
+wait for 100 ns; 
+a<="1010"; 
+b<="1001"; 
+s<="111"; 
+wait for 100 ns; --- wait for <clock>_period*10; -- insert stimulus here 
+wait; 
+end process; 
+END;
+
