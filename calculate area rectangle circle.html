@@ -1,0 +1,58 @@
+Program 1 :   
+  
+index.html  
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Area Calculator</title>  
+  <script src="area.js"></script>  
+</head>  
+<body>  
+  <h2>Area Calculator</h2>  
+  
+  <!-- Triangle -->  
+  <h3>Triangle</h3>  
+  Base: <input type="number" id="base"><br>       
+  Height: <input type="number" id="height"><br>  
+  <button onclick="triangleArea()">Calculate Triangle Area</button>  
+  <p id="triangleResult"></p>  
+  
+  <!-- Rectangle -->  
+  <h3>Rectangle</h3>  
+  Length: <input type="number" id="length"><br>  
+  Breadth: <input type="number" id="breadth"><br>  
+  <button onclick="rectangleArea()">Calculate Rectangle Area</button>  
+  <p id="rectangleResult"></p>  
+  
+  <!-- Circle -->  
+  <h3>Circle</h3>  
+  Radius: <input type="number" id="radius"><br>  
+  <button onclick="circleArea()">Calculate Circle Area</button>  
+  <p id="circleResult"></p>  
+</body>  
+</html>  
+  
+area.js  
+function triangleArea() {   
+ let base = document.getElementById("base").value;    let height = document.getElementById("height").value;    let area = 0.5 * base * height;   
+document.getElementById("triangleResult").innerText = "Area of Triangle = " + area;  
+}  
+  
+function rectangleArea() {    
+let length = document.getElementById("length").value;    let breadth = document.getElementById("breadth").value;    let area = length * breadth;   
+ document.getElementById("rectangleResult").innerText = "Area of Rectangle = " + area;  
+}  
+  
+function circleArea() {    
+let radius = document.getElementById("radius").value;    let area = 3.14 * radius * radius;   
+document.getElementById("circleResult").innerText = "Area of Circle = " + area;  
+}  
+ 
+ 
+ 
+ 
+ 
+ Output: 
+ 
+  

@@ -1,0 +1,90 @@
+Program  
+1.Reverse a String 
+ 
+Index.html 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Reverse String Recursively</title> 
+</head> 
+<body> 
+    <h2>Reverse a String Using Recursion</h2> 
+    <label>Enter a string:</label> 
+    <input type="text" id="inputString"><br><br> 
+    <button onclick="reverseString()">Reverse</button> 
+    <h3 id="result"></h3> 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Script.js function recursiveReverse(str) { 
+    if (str === "") {         return ""; 
+    } 
+    return recursiveReverse(str.substring(1)) + str.charAt(0); 
+}function reverseString() { 
+    let str = document.getElementById("inputString").value;     let length = str.length;     console.log("Length of string:", length); // Optional: for debugging     let reversedStr = recursiveReverse(str);     document.getElementById("result").innerText = "Reversed String: " + reversedStr; 
+} 
+ 
+ 
+Output: 
+  
+  
+2.Replace Character of a string 
+ 
+Index.html 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Replace Substring in String</title> 
+</head> 
+<body> 
+    <h2>Replace a Substring Using JavaScript</h2> 
+    <label>Enter the original string:</label> 
+    <input type="text" id="inputString"><br><br> 
+    <label>Enter the text to replace:</label> 
+    <input type="text" id="matchText"><br><br> 
+    <label>Enter the replacement text:</label> 
+    <input type="text" id="patternText"><br><br> 
+    <button onclick="replaceText()">Replace</button> 
+    <h3 id="result"></h3> 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Script.js function replaceText()     let str = document.getElementById("inputString").value;    let match = document.getElementById("matchText").value;    let pattern = document.getElementById("patternText").value;     let newStr = str.replace(match, pattern);     document.getElementById("result").innerText = "New String: " + newStr; 
+} 
+ 
+Output: 
+ 
+   
+3.String is palindrome 
+ 
+Index.html 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Palindrome Check</title> 
+</head> 
+<body> 
+    <h2>Check Palindrome</h2> 
+    <label>Enter a string:</label> 
+    <input type="text" id="inputString"><br><br> 
+    <button onclick="checkPalindrome()">Check</button> 
+    <h3 id="result"></h3> 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+script.js function checkPalindrome() {     let str = document.getElementById("inputString").value;     let reversedStr = str.split("").reverse().join("");     let isPalindrome = (str === reversedStr);      if (isPalindrome) {        document.getElementById("result").innerText = `"${str}" is a Palindrome`; 
+   } else { 
+        document.getElementById("result").innerText = `"${str}" is NOT a Palindrome`; 
+    } 
+} 
+ 
+Output: 
+ 
+
+ 
+  
+ 
+ 

@@ -1,0 +1,85 @@
+Experiment No -09
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        /* CSS for a grid layout */
+        .calculator { width: 300px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #eee; }
+        #output { width: 95%; height: 50px; margin-bottom: 10px; font-size: 2em; text-align: right; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .buttons button { padding: 15px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer; background: #ddd; }
+        .clear { background-color: #f44336; color: white; }
+        .operator { background-color: #ff9800; color: white; }
+        .equal { grid-column: span 2; background-color: #4caf50; color: white; }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="output" readonly>
+        <div class="buttons">
+            <button class="clear" onclick="clearOutput()">C</button>
+            <button class="operator" onclick="appendToOutput('%')">%</button>
+            <button class="operator" onclick="appendToOutput('/')">/</button>
+            <button class="operator" onclick="appendToOutput('')"></button>
+
+            <button onclick="appendToOutput('7')">7</button><button onclick="appendToOutput('8')">8</button><button onclick="appendToOutput('9')">9</button>
+            <button class="operator" onclick="appendToOutput('-')">-</button>
+
+            <button onclick="appendToOutput('4')">4</button><button onclick="appendToOutput('5')">5</button><button onclick="appendToOutput('6')">6</button>
+            <button class="operator" onclick="appendToOutput('+')">+</button>
+
+            <button onclick="appendToOutput('1')">1</button><button onclick="appendToOutput('2')">2</button><button onclick="appendToOutput('3')">3</button>
+
+            <button onclick="appendToOutput('0')">0</button>
+            <button onclick="appendToOutput('.')">.</button>
+            <button class="equal" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        // 4. Define functionality in script
+        const outputField = document.getElementById('output');
+        let currentExpression = '';
+
+        function appendToOutput(value) {
+            currentExpression += value;
+            outputField.value = currentExpression;
+        }
+
+        function clearOutput() {
+            currentExpression = '';
+            outputField.value = '';
+        }
+
+        function calculateResult() {
+            if (currentExpression === '') return;
+
+            try {
+                // Basic validation: Check if expression ends with an operator (implying incomplete expression)
+                const lastChar = currentExpression.slice(-1);
+                if (['+', '-', '*', '/', '%', '.'].includes(lastChar)) {
+                    // 6. If invalid show an alert.
+                    throw new Error("Incomplete expression.");
+                }
+
+                // 5. & 7. Calculate and display result
+                let result = eval(currentExpression.replace(/%/g, '/100')); 
+                currentExpression = String(result);
+                outputField.value = currentExpression;
+
+            } catch (error) {
+                // 6. If invalid show an alert.
+                alert('Error: Invalid calculation or expression.');
+                currentExpression = '';
+                outputField.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html> 
+
+
+
+ 

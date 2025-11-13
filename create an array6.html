@@ -1,0 +1,101 @@
+Program 6:   
+1.To Remove specific element from the array  
+Index.html  
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>Remove Element from Array</title>  
+</head>  
+<body>  
+  <h2>Remove Element from Array</h2>  
+  <label>Enter Array Elements (comma separated):</label>  
+  <input type="text" id="arrayInput"><br><br>  
+  <label>Enter Element to Remove:</label>  
+  <input type="text" id="removeInput"><br><br>  
+ <button onclick="removeArrayElement()">Remove Element</button>  
+<p id="result"></p>  
+<script src="script.js"></script>  
+</body>  
+</html>  
+ 
+Script.js  function removeArrayElement() {   let arr = document.getElementById("arrayInput").value.split(",");    let element = document.getElementById("removeInput").value.trim();   let index = arr.indexOf(element);  if (index !== -1) { arr.splice(index, 1);      document.getElementById("result").innerHTML =  "Updated Array: " + arr.join(", ");  
+  } else {  
+    document.getElementById("result").innerHTML = "Element Not Found!";  
+  }  
+}    
+Output: 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+2.Check if an array contains a specified value   
+Index.html  
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>Check Element in Array</title>  
+  <script src="script.js" defer></script>  
+</head>  
+<body>  
+  <h2>Check if Element Exists in Array</h2>  
+  <label>Enter Array Elements (comma separated):</label>  
+  <input type="text" id="arrayInput"><br><br>  
+  <label>Enter Element to Check:</label>  
+  <input type="text" id="checkInput"><br><br>  
+  <button onclick="checkArrayElement()">Check Element</button>  
+  <p id="result"></p>  
+</body>  
+</html>  
+  
+Script.js  function checkArrayElement() {    let arr = document.getElementById("arrayInput").value.split(",");   let element = document.getElementById("checkInput").value.trim();   let index = arr.indexOf(element);   if (index !== -1) {  document.getElementById("result").innerHTML = "Element '" + element + "' found at 
+index " + index;  
+  } else {  
+    document.getElementById("result").innerHTML = "Element Not Found!";  
+  }  
+}  
+ 
+Output: 
+   
+  
+3.To empty an array  
+Index.html  
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Empty Array Elements</title>  
+    <script src="script.js" defer></script>  
+</head>  
+<body>  
+    <h2>Empty Array Elements</h2>  
+    <!-- Input for array elements -->  
+    <label>Enter Array Elements (comma separated):</label>  
+    <input type="text" id="arrayInput"><br><br>  
+    <button onclick="emptyArrayElements()">Empty Array</button>  
+    <h3>Result:</h3>  
+    <p id="result"></p>  
+</body>  
+</html>  
+  
+ 
+ 
+ 
+ 
+ 
+
+Script.js  
+function emptyArrayElements() {      let arrayInput = document.getElementById("arrayInput").value;   let arr = arrayInput.split(',').map(item => item.trim());      arr.length = 0;     document.getElementById("result").textContent = "Array after emptying: [" + arr + "]";  
+}  
+ 
+Output: 
+  
+ 
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,83 @@
+Program 5:  
+  
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Countdown Timer</title>  
+    <script src="program5.js"></script>  
+</head>  
+<body>  
+    <h2>Countdown Timer</h2>  
+  
+    <label for="expiry">Select expiry date & time:</label>  
+    <input type="datetime-local" id="expiry"><br><br>  
+  
+    <button onclick="startCountdown()">Start Countdown</button>  
+  
+    <h3>Current Time:</h3>  
+    <p id="currentTime"></p>  
+  
+    <h3>Expiry Time:</h3>  
+    <p id="expiryTime"></p>  
+  
+    <h3>Remaining Time:</h3>  
+    <p id="remainingTime"></p>  
+</body>  
+</html>  
+  
+  
+program5.js  
+  
+let timerInterval;  
+  
+function startCountdown() {      if (timerInterval) clearInterval(timerInterval);  
+  
+    let expiryInput = document.getElementById("expiry").value;     
+if (!expiryInput) {  
+        alert("Please select expiry date and time.");         
+return;  
+    }  
+    let expiryTime = new Date(expiryInput);  
+  
+    document.getElementById("expiryTime").innerText = expiryTime.toLocaleString();  
+  
+    timerInterval = setInterval(() => {         
+let currentTime = new Date();  
+        document.getElementById("currentTime").innerText = currentTime.toLocaleString();  
+  
+        let remaining = expiryTime - currentTime;  
+  
+        if (remaining <= 0) {             
+clearInterval(timerInterval);  
+            document.getElementById("remainingTime").innerText = "Countdown Timer Expired";             
+return;  
+        }  
+  
+        let days = Math.floor(remaining / (1000 * 60 * 60 * 24));          let hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));         
+let minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));         let seconds = Math.floor((remaining % (1000 * 60)) / 1000);  
+  
+        document.getElementById("remainingTime").innerText =             
+days + "d " + hours + "h " + minutes + "m " + seconds + "s";      }, 1000);  
+}  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Output:  
+ 
+  

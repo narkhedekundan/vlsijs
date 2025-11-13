@@ -1,0 +1,38 @@
+Program 2:  
+  
+Index.html  
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Multiplication Table</title>  
+  <script src="program2.js"></script>  
+</head>  
+<body>  
+  <h2>Multiplication Table Generator</h2>  
+  <label for="number">Enter a number:</label>  
+  <input type="number" id="number"><br><br>  
+  <button onclick="generateTable()">Generate Table</button>  
+  <h3>Result:</h3>  
+  <pre id="result"></pre>  
+</body>  
+</html>  
+  
+  
+Program2.js  function generateTable() {  
+let num = document.getElementById("number").value;   
+let output = "";   if (num === "") {  
+    document.getElementById("result").innerText = " Please enter a number.";     
+return;  
+  }  
+  
+ 
+for (let i = 1; i <= 10; i++) {  
+    output += num + " x " + i + " = " + (num * i) + "\n";  
+  }  
+  document.getElementById("result").innerText = output;  
+}  
+ 
+Output: 
+ 
+  

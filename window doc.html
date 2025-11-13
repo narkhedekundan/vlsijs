@@ -1,0 +1,56 @@
+Program10.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Window and Document Properties & Methods</title>
+<script src="program10.js"></script>
+</head>
+<body>
+<h2>Window and Document Properties & Methods</h2>
+<button onclick="showWindowInfo()">Show Window Info</button>
+<button onclick="showDocumentInfo()">Show Document Info</button>
+<div id="output" style="margin-top:20px; font-family:monospace;"></div>
+</body>
+</html>
+
+
+Program10.js
+function showWindowInfo() {
+let info = "<h3>Window Properties & Methods</h3>"; info += "Inner Width: " + window.innerWidth + "px<br>"; info += "Inner Height: " + window.innerHeight + "px<br>"; info += "Screen Width: " + screen.width + "px<br>";
+info += "Screen Height: " + screen.height + "px<br>"; info += "Current URL: " + window.location.href + "<br>"; info += "Protocol: " + window.location.protocol + "<br>"; info += "Host: " + window.location.host + "<br>";
+info += "<br><b>Methods:</b><br>";
+info += "Alert Example: (check popup)<br>";
+ 
+window.alert("This is an example of window.alert() method!"); document.getElementById("output").innerHTML = info;
+}
+function showDocumentInfo() {
+let info = "<h3>Document Properties & Methods</h3>"; info += "Document Title: " + document.title + "<br>";
+info += "Last Modified: " + document.lastModified + "<br>"; info += "URL: " + document.URL + "<br>";
+info += "Domain: " + document.domain + "<br>";
+info += "Number of Elements: " + document.getElementsByTagName('*').length + "<br>"; info += "<br><b>Methods:</b><br>";
+info += "Changing Background Color using document.body.style.backgroundColor<br>"; document.body.style.backgroundColor = "#f0f8ff"; document.getElementById("output").innerHTML = info;
+}
+Output:
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
